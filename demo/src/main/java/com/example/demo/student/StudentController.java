@@ -21,20 +21,20 @@ public class StudentController {
     }
     
     //Want to get students from database
-    //whch uses @GetMapping to retrieve objects from the server/database
+    //which uses @GetMapping to retrieve objects from the server/database
     @GetMapping()
     public List<Student> getStudents(){
         return studentService.getStudents();
     }
     
     //want to post student into the database
-    //whch uses @PostMapping to post objects from the server/database
+    //which uses @PostMapping to post objects from the server/database
     @PostMapping
     public void registerNewStudent(@RequestBody Student student) {
         studentService.addNewStudent(student);
     }
     //want to delete students from the database
-    //whch uses @DeleteMapping to post objects from the server/database
+    //which uses @DeleteMapping to post objects from the server/database
     //@PathVariable extract the value of the template variables and assign their value to a method variable
     @DeleteMapping(path = "{studentId}")
     public void deleteStudent(
@@ -43,7 +43,7 @@ public class StudentController {
     }
     
     //want to edit students in the database
-    //whch uses @PutMapping to post objects from the server/database
+    //which uses @PutMapping to post objects from the server/database
     //@RequestPath annotation enables spring to extract input data that may be passed as a query, form data, or any arbitrary custom data.
     @PutMapping (path = "{studentId}")
     public void updateStudent(
