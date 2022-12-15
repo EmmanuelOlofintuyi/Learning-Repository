@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 //If there is no RequestMapping put GetMapping("/")
-//If there is GetMapping just leave it blank i.e. GetMapping()
+//If there is RequestMapping just leave it blank i.e. GetMapping()
 @RequestMapping(path = "api/v1/student")
 public class StudentController {
 
@@ -19,22 +19,32 @@ public class StudentController {
     public StudentController(StudentService studentService) {
         this.studentService =  studentService;
     }
-
+    
+    //Want to get students from database
+    //whch uses @GetMapping to retrieve objects from the server/database
     @GetMapping()
     public List<Student> getStudents(){
         return studentService.getStudents();
     }
-
+    
+    //want to post student into the database
+    //whch uses @PostMapping to post objects from the server/database
     @PostMapping
     public void registerNewStudent(@RequestBody Student student) {
         studentService.addNewStudent(student);
     }
+    //want to delete students from the database
+    //whch uses @DeleteMapping to post objects from the server/database
+    //@PathVariable extract the value of the template variables and assign their value to a method variable
     @DeleteMapping(path = "{studentId}")
     public void deleteStudent(
             @PathVariable("studentId") Long studentId){
         studentService.deleteStudent(studentId);
     }
-
+    
+    //want to edit students in the database
+    //whch uses @PutMapping to post objects from the server/database
+    //@RequestPath annotation enables spring to extract input data that may be passed as a query, form data, or any arbitrary custom data.
     @PutMapping (path = "{studentId}")
     public void updateStudent(
             @PathVariable("studentId") Long studentId,
